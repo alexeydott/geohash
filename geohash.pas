@@ -558,7 +558,7 @@ begin
   if (HashLength < 1) or (HashLength > MAX_HASH_LENGTH) then
     HashLength := MAX_HASH_LENGTH;
 
-  SetLength(VResult,HashLength);
+  VResult := string.Create(' ', HashLength);
 
   Area := TGeoHashEnvelope.InitialRange;
 
@@ -583,6 +583,8 @@ begin
 
     Inc(I);
   end;
+
+  VResult := VResult.Trim();
 end;
 
 class procedure TGeoHash.RefineRange(var Range: TGeoHashRange; Bits: NativeInt;
